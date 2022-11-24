@@ -1,0 +1,7 @@
+if (outcome != success) of /subsystem=undertow/configuration=filter/expression-filter=FooBar:read-resource
+    /subsystem=undertow/configuration=filter/expression-filter=FooBar:add(expression="path-prefix('/foo') -> rewrite('/bar$${remaining}')")
+end-if
+
+if (outcome != success) of /subsystem=undertow/server=default-server/host=default-host/filter-ref=FooBar:read-resource
+    /subsystem=undertow/server=default-server/host=default-host/filter-ref=FooBar:add()
+end-if
